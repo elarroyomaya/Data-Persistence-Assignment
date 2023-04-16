@@ -7,6 +7,7 @@ public class MainManager : MonoBehaviour
 
     public static MainManager Instance;
     private string playerName;
+    private int playerHighScore = 0;
 
     // Define MainManager as a singleton, persist when changing scene
     
@@ -24,8 +25,8 @@ public class MainManager : MonoBehaviour
     [System.Serializable]
     class PlayerData
     {
-        public string playerName;
-        public string playerHigherScore;
+        public string savedPlayerName;
+        public string savedPlayerHighscore;
     }
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,13 @@ public class MainManager : MonoBehaviour
     public string GetName()
     {
         return playerName;
+    }
+
+    public int UpdateHighScore(int score)
+    {
+        if (score > playerHighScore)
+            playerHighScore = score;
+        return playerHighScore;
     }
 
 }
