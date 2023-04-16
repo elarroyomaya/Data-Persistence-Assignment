@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
             }
         }
         HigherPlayerScoreText.text = $"{MainManager.Instance.GetName()} high score: {MainManager.Instance.UpdateHighScore(0)}";
+        MainManager.Instance.UpdateBestScore(0);
+        BestScoreText.text = $"Best Score :  {MainManager.Instance.bestScorePlayer} : {MainManager.Instance.bestScore}";
     }
 
     private void Update()
@@ -76,6 +78,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         HigherPlayerScoreText.text = $"{MainManager.Instance.GetName()} high score: {MainManager.Instance.UpdateHighScore(m_Points)}";
+        MainManager.Instance.UpdateBestScore(m_Points);
+        BestScoreText.text = $"Best Score :  {MainManager.Instance.bestScorePlayer} : {MainManager.Instance.bestScore}";
         m_GameOver = true;
         GameOverText.SetActive(true);
     }
